@@ -71,12 +71,11 @@ def main():
             # If the update is a message...
             if update.message is not None:
                 # Ensure the message has been sent in a private chat
-                
-                if update.message.chat.type == "public":
+                if update.message.chat.type != "private":
                     log.debug(f"Received a message from a non-private chat: {update.message.chat.id}")
-                     #Notify the chat
+                    # Notify the chat
                     bot.send_message(update.message.chat.id, default_loc.get("error_nonprivate_chat"))
-                  #   Skip the update
+                    # Skip the update
                     continue
                 # If the message is a start command...
                 if isinstance(update.message.text, str) and update.message.text.startswith("/start"):
