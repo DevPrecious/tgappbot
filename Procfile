@@ -1,2 +1,2 @@
 web: gunicorn callback:app
-worker: python core.py
+worker: python3 core.py
