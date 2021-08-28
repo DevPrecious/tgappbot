@@ -74,7 +74,7 @@ class Worker(threading.Thread):
         """The conversation code."""
         log.debug("Starting conversation")
         # Get the user db data from the users and admin tables
-#         self.user = self.session.query(db.User).filter(db.User.user_id == self.chat.id).one_or_none()
+        self.user = self.session.query(db.User).filter(db.User.user_id == self.chat.id).one_or_none()
         self.admin = self.session.query(db.Admin).filter(db.Admin.user_id == self.chat.id).one_or_none()
         # If the user isn't registered, create a new record and add it to the db
         if self.user is None:
